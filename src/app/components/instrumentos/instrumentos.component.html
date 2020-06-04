@@ -1,0 +1,23 @@
+<h1 style="text-align: left; margin: 1%;"><b>Nuestros Instrumentos: </b></h1>
+<div *ngFor="let instrumentoAux of instrumentosArr; let i = index" style="max-width: 30%; margin-left: 30vh;">
+  <div class="card" style="width: 60rem;">
+    <div class="card-body" style="text-align: center;">
+      <img class="card-img-top" src="assets/img/{{instrumentoAux.imagen}}" style="max-width: 25%;">
+      <h3 class="card-title" style="text-align: left;">{{instrumentoAux.instrumento}}</h3>
+      <h4 class="card-title" style="text-align: left;">Precio: ${{instrumentoAux.precio}}</h4>
+      <div style="text-align: left;" *ngIf=" instrumentoAux.costoEnvio === 'G'; else saltaAqui">
+        <img :src="assets/img/camion.png" width="7%" class="mb-1" />
+        <span style="color: green;">Envío gratis a todo el país</span>
+      </div>
+      <ng-template #saltaAqui>
+        <h6 class="card-title" style="text-align: left; color: orange;">
+          Costo de Envio Interior de Argentina: ${{instrumentoAux.costoEnvio}}
+        </h6>
+      </ng-template>
+      <h6 class="card-title" style="text-align: left;">{{instrumentoAux.cantidadVendida}} vendidos</h6>
+    </div>
+    <div class="card-footer" style="text-align: center;">
+      <button (click)="verInstrumento(instrumentoAux.id)" class="btn btn-primary" style="width: 90%;">Detalle</button>
+    </div>
+  </div>
+</div>

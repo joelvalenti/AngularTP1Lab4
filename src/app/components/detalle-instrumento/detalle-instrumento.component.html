@@ -1,0 +1,32 @@
+<br>
+<div class="row" style="margin-left: 1%; margin-right: 1%;">
+    <div class="col-md-7" style="text-align: center">
+        <img src="assets/img/{{instrumento.imagen}}" style="max-width: 10000px;">
+        <br><br>
+        <a [routerLink]="['/instrumentos']" class="btn btn-outline-danger btn-block">Regresar</a>
+        <br>
+        <h6>{{instrumento.descripcion}}</h6>
+    </div>  
+    <div class="col-3">
+        <p>{{instrumento.cantidadVendida}} vendidos</p>
+        <h3 style="color: crimson">{{instrumento.instrumento}}</h3>
+        <hr>
+        <p><b>Precio: </b>${{instrumento.precio}}</p>
+        <p><b>Marca:</b> {{instrumento.marca}}</p>
+        <p><b>Modelo:</b> {{instrumento.modelo}}</p>
+        <div style="text-align: left;" *ngIf=" instrumento.costoEnvio === 'G'; else saltaAqui">
+            <img :src="assets/img/camion.png" width="7%" class="mb-1" />
+            <span style="color: green;">Envío gratis a todo el país</span>
+            <br><br>
+          </div>
+          <ng-template #saltaAqui>
+            <h6 class="card-title" style="text-align: left; color: orange;">
+              Costo de Envio Interior de Argentina: ${{instrumento.costoEnvio}}
+            </h6>
+          </ng-template>
+        <div>
+            <a [routerLink]="['/home']" class="btn btn-outline-danger btn-block">Agregar al carrito</a>
+        </div>
+    </div> 
+</div>
+
